@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Red Clay Open 2027</title>
+<meta name="description" content="Red Clay Open, 17 to 23 May 2027. Seven days on clay, sixty-four players, one serve at a time. A design concept.">
+<meta property="og:title" content="Red Clay Open 2027">
+<meta property="og:description" content="Seven days on clay. Sixty-four players. One serve at a time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://moh4696.github.io/red-clay-open/">
+<meta property="og:image" content="https://moh4696.github.io/red-clay-open/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://moh4696.github.io/red-clay-open/assets/og.jpg">
+<meta name="theme-color" content="#7a0b1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<canvas id="ball3d" aria-hidden="true"></canvas>
+<div class="ballshadow" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="#top" aria-label="Red Clay Open, back to top">
+    <svg class="brand-ball" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"/><path d="M6.5 9.5c7 4.5 7 16.5 0 21M33.5 9.5c-7 4.5-7 16.5 0 21"/></svg>
+    <span>Red Clay Open</span>
+  </a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#week">The Week</a>
+    <a href="#serve-anatomy">The Serve</a>
+    <a href="#centre">Centre Court</a>
+  </nav>
+  <a class="pill" href="#tickets">Tickets</a>
+</header>
+
+<main id="top">
+
+  <!-- 1 + 2: hero toss loop, then the serve scrubs with scroll -->
+  <section class="serve" id="serve" aria-label="Red Clay Open 2027">
+    <div class="serve-sticky">
+      <div class="sky"></div>
+      <div class="layer disc-layer" data-depth="0.18"><div class="stage-box"><div class="disc"></div></div></div>
+      <div class="layer type-layer" data-depth="0.4">
+        <div class="title">
+          <span class="title-kicker">Red Clay</span>
+          <span class="title-open">OPEN</span>
+        </div>
+      </div>
+      <div class="layer stage-layer" data-depth="0.75">
+        <div class="stage" id="stage">
+          <img class="stage-poster" src="assets/hero/poster.webp" alt="" width="1350" height="1800">
+          <canvas class="stage-canvas" id="heroCanvas"></canvas>
+          <canvas class="stage-canvas" id="serveCanvas"></canvas>
+        </div>
+      </div>
+      <div class="hero-ui">
+        <div class="hero-date">
+          <span class="eyebrow">Clay season starts here</span>
+          <strong>17&ndash;23 May 2027</strong>
+          <span>64 players &middot; 7 days &middot; 1 champion</span>
+        </div>
+        <div class="hero-cue" aria-hidden="true">
+          <span class="cue-ball"></span>
+          Scroll to serve
+        </div>
+      </div>
+      <div class="serve-caption" aria-hidden="true">
+        <span data-at="0.18">Toss</span>
+        <span data-at="0.36">Load</span>
+        <span data-at="0.52">Strike</span>
+      </div>
+      <div class="ball-wipe"></div>
+    </div>
+  </section>
+
+  <!-- 3: numbers on ball orange -->
+  <section class="numbers" id="numbers">
+    <p class="numbers-lead">Every point starts the same way: <em>one ball in the air.</em></p>
+    <div class="numbers-grid">
+      <div class="num"><b data-count="64">64</b><span>players in the singles draw</span></div>
+      <div class="num"><b data-count="63">63</b><span>matches to crown one champion</span></div>
+      <div class="num"><b data-count="7">7</b><span>days on red clay</span></div>
+      <div class="num"><b data-count="1">1</b><span>trophy, and it goes home with someone</span></div>
+    </div>
+  </section>
+
+  <!-- 4: the week, the ball bounces day to day -->
+  <section class="week" id="week">
+    <div class="court" aria-hidden="true">
+      <svg class="court-lines" viewBox="0 0 100 220" preserveAspectRatio="none">
+        <path pathLength="1" d="M8 4H92V216H8Z"/>
+        <path pathLength="1" d="M18 4V216M82 4V216"/>
+        <path pathLength="1" d="M18 60H82M18 160H82M50 60V160"/>
+        <path pathLength="1" class="net" d="M2 110H98"/>
+      </svg>
+    </div>
+    <div class="week-head">
+      <span class="eyebrow">The Week</span>
+      <h2>Seven days,<br><em>one draw.</em></h2>
+      <p>Play starts at 11:00 on all nine courts. Night sessions on Centre Court from Wednesday.</p>
+    </div>
+    <ol class="days">
+      <li class="day" data-bounce><span class="d-date">Mon 17</span><span class="d-round">First round</span><span class="d-note">32 matches across 9 courts</span></li>
+      <li class="day" data-bounce><span class="d-date">Tue 18</span><span class="d-round">First round</span><span class="d-note">The draw is halved by dusk</span></li>
+      <li class="day" data-bounce><span class="d-date">Wed 19</span><span class="d-round">Round of 32</span><span class="d-note">First night session, 19:30</span></li>
+      <li class="day" data-bounce><span class="d-date">Thu 20</span><span class="d-round">Round of 16</span><span class="d-note">Centre Court sells out first</span></li>
+      <li class="day" data-bounce><span class="d-date">Fri 21</span><span class="d-round">Quarterfinals</span><span class="d-note">Four matches, one court</span></li>
+      <li class="day" data-bounce><span class="d-date">Sat 22</span><span class="d-round">Semifinals</span><span class="d-note">Day and night</span></li>
+      <li class="day final" data-bounce><span class="d-date">Sun 23</span><span class="d-round">Final</span><span class="d-note">15:00, Centre Court</span></li>
+    </ol>
+  </section>
+
+  <!-- 5: anatomy of a serve, horizontal -->
+  <section class="anatomy" id="serve-anatomy">
+    <div class="anatomy-sticky">
+      <div class="anatomy-head">
+        <span class="eyebrow">Anatomy of a serve</span>
+        <h2>Under a second,<br><em>six moments.</em></h2>
+      </div>
+      <div class="strip" id="strip">
+        <figure class="pose"><div class="pose-disc"></div><img alt="The toss leaves his hand" loading="lazy"><figcaption><b>01</b>Toss</figcaption></figure>
+        <figure class="pose"><div class="pose-disc"></div><img alt="The ball peaks above his reaching hand" loading="lazy"><figcaption><b>02</b>Peak</figcaption></figure>
+        <figure class="pose"><div class="pose-disc"></div><img alt="Knees bend and the shoulders coil" loading="lazy"><figcaption><b>03</b>Load</figcaption></figure>
+        <figure class="pose"><div class="pose-disc"></div><img alt="He turns and launches upward, racket behind his head" loading="lazy"><figcaption><b>04</b>Launch</figcaption></figure>
+        <figure class="pose"><div class="pose-disc"></div><img alt="The ball leaves the strings" loading="lazy"><figcaption><b>05</b>Strike</figcaption></figure>
+        <figure class="pose"><div class="pose-disc"></div><img alt="Follow-through across the body" loading="lazy"><figcaption><b>06</b>Finish</figcaption></figure>
+      </div>
+      <div class="strip-progress"><span></span></div>
+    </div>
+  </section>
+
+  <!-- 6: centre court -->
+  <section class="centre" id="centre">
+    <video class="centre-video" muted loop playsinline preload="none" poster="assets/centre/poster.jpg">
+      <source src="assets/centre/centre.mp4" type="video/mp4">
+    </video>
+    <div class="centre-copy">
+      <span class="eyebrow">Centre Court</span>
+      <h2>Five thousand seats.<br><em>None of them far.</em></h2>
+      <p>The stands rise steeply on all four sides, so the back row still hears the ball hit the strings.</p>
+    </div>
+  </section>
+
+  <!-- 7: tickets -->
+  <section class="tickets" id="tickets">
+    <div class="tickets-head">
+      <span class="eyebrow">Tickets</span>
+      <h2>Pick your <em>days.</em></h2>
+      <p>Sales open on 2 February 2027. Join the list and we'll write once, the morning they go live.</p>
+    </div>
+    <div class="cards">
+      <article class="card c-early" data-tilt>
+        <span class="card-tag">Mon&ndash;Wed</span>
+        <h3>Opening Days</h3>
+        <p>Ground pass to all nine courts. The best tennis per hour of the week.</p>
+        <span class="card-cta">Join the list</span>
+      </article>
+      <article class="card c-mid" data-tilt>
+        <span class="card-tag">Thu&ndash;Sat</span>
+        <h3>The Business End</h3>
+        <p>Centre Court seats for the round of 16, quarters and semis, day and night.</p>
+        <span class="card-cta">Join the list</span>
+      </article>
+      <article class="card c-final" data-tilt>
+        <span class="card-tag">Sun 23</span>
+        <h3>Final Day</h3>
+        <p>One match, one trophy, one sunset over Centre Court.</p>
+        <span class="card-cta">Join the list</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- 8: footer sunset, the ball drops into the disc -->
+  <footer class="sunset" id="sunset">
+    <div class="sunset-disc" id="sunsetDisc"></div>
+    <div class="sunset-copy">
+      <h2>See you<br><em>on clay.</em></h2>
+      <a class="pill pill-lg" href="#tickets">Join the ticket list</a>
+    </div>
+    <div class="credits">
+      <p>Original illustration by <a href="https://www.linkedin.com/in/omarsaeed2" target="_blank" rel="noopener">Omar Saeed</a>, from his 3D Sports Illustrations series. Motion built from it with Higgsfield.</p>
+      <p>Red Clay Open is a fictional tournament. This page is a design concept, and no tickets are sold here.</p>
+    </div>
+  </footer>
+</main>
+
+<script src="vendor/lenis.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
